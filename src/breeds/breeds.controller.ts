@@ -2,6 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { BreedsService } from './breeds.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { Role } from 'src/common/enums/rol.enum';
+
+
+@Auth(Role.ADMIN)//SOLO ADMINISTRADORES PUEDEN REALIZAR CAMBIOS EN /breeds
 
 @Controller('breeds')
 export class BreedsController {
